@@ -13,7 +13,7 @@ export const POST = async (request) => {
 
     const sessionUser = await getSessionUser();
 
-    if (!session || !session.userId) {
+    if (!sessionUser || !sessionUser.userId) {
       return new Response('User ID is required', { status: 401 });
     }
 
@@ -23,13 +23,13 @@ export const POST = async (request) => {
     const user = await User.findOne({ _id: userId });
 
     // Check if property is bookmarked
-    let isBookmarked = user.bookmarks.includes(propertId);
+    let isBookmarked = user.bookmarks.includes(propertyId);
 
     let message;
 
     if (isBookmarked) {
       // If already bookmarked, remove bookmark
-      user.bookmarks.pull(propertId);
+      user.bookmarks.pull(propertyId);
       message = 'Bookmark removed successfully';
       isBookmarked = false;
     } else {
