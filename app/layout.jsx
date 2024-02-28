@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AuthProvider from '@/components/AuthProvider';
 import { ToastContainer } from 'react-toastify';
+import { Analytics } from '@vercel/analytics/react';
 import { GlobalProvider } from '@/context/GlobalContext';
 import '@/assets/styles/globals.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -23,6 +24,7 @@ const MainLayout = ({ children }) => {
             <main>{children}</main>
             <Footer />
             <ToastContainer />
+            <Analytics />
           </body>
         </html>
       </AuthProvider>
